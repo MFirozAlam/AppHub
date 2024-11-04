@@ -1,6 +1,7 @@
 package com.example.apphub.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.apphub.model.EMI
 import kotlin.math.pow
 
 class EMICalculatorViewModel : ViewModel() {

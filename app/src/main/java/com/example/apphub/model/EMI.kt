@@ -1,4 +1,4 @@
-package com.example.apphub.viewmodel
+package com.example.apphub.model
 
 data class EMI(
     val principal: Float,
