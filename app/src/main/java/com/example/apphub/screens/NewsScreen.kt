@@ -2,6 +2,7 @@ package com.example.apphub.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -10,9 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.example.apphub.viewmodel.NewsViewModel
 
 @Composable
-fun NewsScreen(viewModel: NavHostController = viewModel()) {
+fun NewsScreen(
+    navController: NavHostController,
+    viewModel: NewsViewModel = viewModel() // Automatically provides the ViewModel instance
+) {
     val newsArticles = viewModel.newsArticles.collectAsState().value
 
     LazyColumn(modifier = Modifier.padding(16.dp)) {
@@ -23,7 +28,7 @@ fun NewsScreen(viewModel: NavHostController = viewModel()) {
                 style = MaterialTheme.typography.bodySmall
             )
             Spacer(modifier = Modifier.height(8.dp))
-            Text(text = article.description, style = MaterialTheme.typography.bodyMedium)
+            Text(text = article.description ?: "", style = MaterialTheme.typography.bodyMedium)
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
